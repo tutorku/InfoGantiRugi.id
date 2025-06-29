@@ -1,0 +1,358 @@
+Sangat baik. Saya akan merancang dan membuatkan kode untuk aplikasi web tersebut, mengintegrasikan semua poin yang telah kita diskusikan:
+
+1.  **Fokus Edukasi:** Menjaga bagian informasi (Proses, Studi Kasus, Rincian, Checklist).
+2.  **Kalkulator Gratis sebagai Pintu Masuk:** Menyediakan kalkulator dasar untuk memancing minat.
+3.  **Layanan Premium Berbayar:** Menambahkan modul baru yang menawarkan jasa penyusunan laporan dengan tingkatan harga.
+4.  **Formulir Detail dengan Upload:** Formulir premium yang memungkinkan pengguna mengisi semua data dan mengunggah dokumen pendukung.
+5.  **Perlindungan Hukum:** Menerapkan prinsip tanggung jawab data pada pengguna dengan mewajibkan mereka mengisi data sensitif sendiri dan menyetujui syarat & ketentuan.
+6.  **Tanpa Fungsi Download PDF:** Menghilangkan fungsi unduh untuk mencegah kesalahpahaman.
+
+Berikut adalah kode lengkap untuk aplikasi web "InfoGantiRugi.id" versi final yang siap menjadi platform layanan Anda.
+
+\<immersive type="code" title="Aplikasi Web InfoGantiRugi.id dengan Layanan Premium"\>
+
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;id&quot; class=&quot;scroll-smooth&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;InfoGantiRugi.id - Konsultasi &amp; Penyusunan Laporan UGR&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        body { font-family: &#39;Inter&#39;, sans-serif; background-color: #f5f5f4; }
+        .section-title { font-size: 2.25rem; font-weight: 800; color: #262626; margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.125rem; color: #57534e; max-width: 800px; margin: 0 auto 3rem auto; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e7e5e4; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1); }
+        .nav-link { transition: color 0.2s; }
+        .nav-link:hover { color: #059669; }
+        .btn-primary { background-color: #059669; color: white; transition: background-color 0.2s; font-weight: 600; }
+        .btn-primary:hover { background-color: #047857; }
+        .btn-secondary { background-color: #f59e0b; color: white; transition: background-color 0.2s; font-weight: 600; }
+        .btn-secondary:hover { background-color: #d97706; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 400px; }
+        .premium-highlight { border: 2px solid #f59e0b; transform: scale(1.05); }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;text-stone-800&quot;&gt;
+
+```
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold text-emerald-700">InfoGantiRugi.id</div>
+        <div class="hidden md:flex items-center space-x-6 text-sm">
+            <a href="#edukasi" class="nav-link text-stone-600 font-medium">Edukasi UGR</a>
+            <a href="#estimasi" class="nav-link text-stone-600 font-medium">Kalkulator Gratis</a>
+            <a href="#layanan-premium" class="nav-link font-bold text-amber-600">Layanan Profesional</a>
+        </div>
+         <a href="#layanan-premium" class="md:hidden btn-secondary py-2 px-3 rounded-lg text-sm">Layanan Profesional</a>
+    </nav>
+</header>
+
+<main>
+    <section id="hero" class="text-center py-20 px-6 bg-emerald-50">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-stone-800 mb-4">Pahami Ganti Rugi, Dapatkan Nilai Terbaik</h1>
+        <p class="text-lg md:text-xl text-stone-600 max-w-3xl mx-auto mb-8">
+            Platform edukasi untuk memahami proses ganti rugi (UGR) dan layanan profesional untuk membantu Anda menyusun permohonan nilai yang layak dan adil.
+        </p>
+        <a href="#layanan-premium" class="btn-secondary py-3 px-8 rounded-lg text-lg">Lihat Paket Layanan</a>
+    </section>
+
+```
+<section id="edukasi" class="py-20 px-6">
+    <div class="text-center">
+         <h2 class="section-title">Tahap Awal: Pahami Dulu Dasarnya</h2>
+         <p class="section-subtitle">Gunakan sumber daya gratis kami untuk memahami hak, prosedur, dan faktor penentu nilai dalam proses pengadaan tanah untuk proyek strategis nasional.</p>
+    </div>
+    
+    <div class="container mx-auto space-y-16">
+         <div class="card p-8">
+            <h3 class="text-2xl font-bold text-center mb-6">Alur Proses Ganti Rugi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div><div class="text-4xl mb-2">📜</div><h4 class="font-bold">Dasar Hukum</h4><p class="text-sm text-stone-600">UU No. 2/2012 & Perpres terkait.</p></div>
+                <div><div class="text-4xl mb-2">🔎</div><h4 class="font-bold">Tim Appraisal</h4><p class="text-sm text-stone-600">Penilaian oleh tim independen (KJPP).</p></div>
+                <div><div class="text-4xl mb-2">🤝</div><h4 class="font-bold">Musyawarah</h4><p class="text-sm text-stone-600">Forum negosiasi bentuk & besaran UGR.</p></div>
+                <div><div class="text-4xl mb-2">⚖️</div><h4 class="font-bold">Keberatan</h4><p class="text-sm text-stone-600">Hak hukum mengajukan keberatan ke pengadilan.</p></div>
+            </div>
+        </div>
+
+         <div class="card p-8">
+            <h3 class="text-2xl font-bold text-center mb-2">Studi Kasus: Pengaruh Akses Jalan</h3>
+            <p class="text-center text-stone-600 mb-6 max-w-2xl mx-auto">Grafik ini adalah simulasi untuk menunjukkan betapa pentingnya akses jalan dalam menentukan nilai tanah di berbagai proyek tol. Ini BUKAN harga final untuk Ciranjang-Padalarang.</p>
+            <div class="chart-container"><canvas id="comparisonChart"></canvas></div>
+        </div>
+    </div>
+</section>
+
+<section id="estimasi" class="py-20 px-6 bg-white">
+     <div class="text-center">
+        <h2 class="section-title">Langkah 1: Gunakan Kalkulator Gratis Kami</h2>
+        <p class="section-subtitle">
+            Dapatkan gambaran awal rentang nilai properti Anda dengan kalkulator sederhana ini. Hasilnya akan membantu Anda memutuskan langkah selanjutnya.
+        </p>
+    </div>
+    <div class="card max-w-2xl mx-auto p-8">
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div>
+                <label for="free-land-area" class="block font-medium text-stone-700 mb-1">Luas Tanah (m²)</label>
+                <input type="number" id="free-land-area" placeholder="Contoh: 500" class="w-full p-3 rounded-lg border border-stone-300">
+            </div>
+             <div>
+                <label for="free-building-area" class="block font-medium text-stone-700 mb-1">Luas Bangunan (m²)</label>
+                <input type="number" id="free-building-area" placeholder="Contoh: 150" class="w-full p-3 rounded-lg border border-stone-300">
+            </div>
+             <div class="md:col-span-2">
+                <label for="free-access-type" class="block font-medium text-stone-700 mb-1">Kualitas Akses Jalan Utama</label>
+                <select id="free-access-type" class="w-full p-3 rounded-lg border border-stone-300">
+                    <option value="desa">Jalan Desa / Gang Kecil</option>
+                    <option value="kabupaten">Jalan Kabupaten (2 mobil papasan)</option>
+                    <option value="provinsi">Jalan Provinsi / Nasional</option>
+                </select>
+            </div>
+         </div>
+        <div class="mt-8">
+            <button id="calculate-free-btn" class="w-full btn-primary font-bold py-3 px-6 rounded-lg text-lg">Hitung Estimasi Awal</button>
+        </div>
+        <div id="free-estimation-result" class="mt-8 text-center" style="display: none;">
+            <div class="p-6 bg-emerald-50 rounded-lg">
+                <h3 class="text-lg font-semibold text-stone-800">Hasil Estimasi Awal Anda:</h3>
+                <p id="free-result-text" class="text-2xl md:text-4xl font-bold text-emerald-700 my-2"></p>
+                <p class="text-sm text-stone-500">*Ini adalah perkiraan kasar. Faktor krusial seperti view, potensi bisnis, dan kedekatan dengan Stasiun KCIC belum dihitung.</p>
+            </div>
+            <div class="mt-8 p-6 bg-amber-50 rounded-lg border-2 border-amber-300">
+                <h3 class="text-xl font-bold text-amber-800">Apakah Properti Anda Punya Potensi Lebih?</h3>
+                <p class="my-3 text-stone-700">Jika lokasi Anda strategis, dekat KCIC, atau memiliki keunikan lain, nilainya bisa jauh lebih tinggi. Jangan biarkan potensi itu tidak dinilai. Kami siap membantu.</p>
+                <a href="#layanan-premium" id="cta-premium-btn" class="btn-secondary font-bold py-3 px-8 rounded-lg inline-block">Dapatkan Analisis Mendalam & Susun Laporan Resmi</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="layanan-premium" class="py-20 px-6">
+     <div class="text-center">
+        <h2 class="section-title">Langkah 2: Pilih Layanan Profesional Kami</h2>
+        <p class="section-subtitle">
+            Kami menerjemahkan data dan potensi properti Anda menjadi sebuah Laporan Permohonan UGR yang formal, persuasif, dan profesional sebagai dasar negosiasi Anda.
+        </p>
+    </div>
+    
+    <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="card p-8 flex flex-col">
+            <h3 class="text-2xl font-bold mb-2">Paket Digital</h3>
+            <p class="text-amber-600 font-bold text-3xl mb-4">Rp 350.000</p>
+            <ul class="space-y-3 text-stone-600 flex-grow">
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Penyusunan Laporan Permohonan UGR (Format PDF).</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Berdasarkan data & dokumen yang Anda kirim.</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Pengerjaan 2-3 hari kerja.</li>
+            </ul>
+            <button class="w-full btn-primary mt-6 py-2 px-6 rounded-lg" onclick="selectPackage('digital')">Pilih Paket Digital</button>
+        </div>
+        <div class="card p-8 flex flex-col premium-highlight">
+             <p class="text-center font-bold bg-amber-400 text-white py-1 px-4 rounded-full -mt-12 mx-auto w-fit">Paling Populer</p>
+            <h3 class="text-2xl font-bold mb-2 mt-4">Paket Konsultasi</h3>
+            <p class="text-amber-600 font-bold text-3xl mb-4">Rp 950.000</p>
+            <ul class="space-y-3 text-stone-600 flex-grow">
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Semua fitur Paket Digital.</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span><strong>Sesi Konsultasi 45 menit via Telepon/Video.</strong></li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Membantu mempertajam argumen & narasi laporan.</li>
+            </ul>
+            <button class="w-full btn-secondary mt-6 py-2 px-6 rounded-lg" onclick="selectPackage('konsultasi')">Pilih Paket Konsultasi</button>
+        </div>
+         <div class="card p-8 flex flex-col">
+            <h3 class="text-2xl font-bold mb-2">Paket Premium</h3>
+            <p class="text-amber-600 font-bold text-3xl mb-4">Harga Kustom</p>
+            <ul class="space-y-3 text-stone-600 flex-grow">
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Untuk aset bernilai tinggi atau kasus kompleks.</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Analisis mendalam & riset data pembanding.</li>
+                <li class="flex items-start"><span class="text-emerald-500 mr-2">✔</span>Dukungan penuh selama proses musyawarah.</li>
+            </ul>
+            <button class="w-full btn-primary mt-6 py-2 px-6 rounded-lg" onclick="selectPackage('premium')">Konsultasi Paket Premium</button>
+        </div>
+    </div>
+
+    <div id="premium-form-container" class="max-w-4xl mx-auto" style="display: none;">
+        <div class="card p-8">
+            <h3 id="form-title" class="text-3xl font-bold mb-6 text-center">Formulir Pengajuan Layanan</h3>
+            <form id="premium-form" action="#" method="POST">
+                <fieldset class="mb-8 border p-4 rounded-lg">
+                    <legend class="font-bold px-2">Data Diri Anda</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                        <div><label for="name" class="block text-sm font-medium">Nama Lengkap</label><input type="text" id="name" required class="w-full p-2 border rounded"></div>
+                        <div><label for="nik" class="block text-sm font-medium">No. KTP (NIK)</label><input type="text" id="nik" required class="w-full p-2 border rounded"></div>
+                        <div><label for="email" class="block text-sm font-medium">Email Aktif</label><input type="email" id="email" required class="w-full p-2 border rounded"></div>
+                        <div><label for="phone" class="block text-sm font-medium">No. Telepon/WA</label><input type="tel" id="phone" required class="w-full p-2 border rounded"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="mb-8 border p-4 rounded-lg">
+                    <legend class="font-bold px-2">Data Detail Properti</legend>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                        <div><label for="cert-no" class="block text-sm font-medium">No. Sertifikat (SHM)</label><input type="text" id="cert-no" required class="w-full p-2 border rounded"></div>
+                        <div><label for="cert-no-confirm" class="block text-sm font-medium">Ulangi No. Sertifikat</label><input type="text" id="cert-no-confirm" required class="w-full p-2 border rounded"></div>
+                        <div><label for="prop-land-area" class="block text-sm font-medium">Luas Tanah (m²)</label><input type="number" id="prop-land-area" required class="w-full p-2 border rounded"></div>
+                        <div><label for="prop-building-area" class="block text-sm font-medium">Luas Bangunan (m²)</label><input type="number" id="prop-building-area" class="w-full p-2 border rounded"></div>
+                    </div>
+                </fieldset>
+                
+                 <fieldset class="mb-8 border p-4 rounded-lg">
+                    <legend class="font-bold px-2">Faktor Premium (Centang yang sesuai)</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4">
+                        <label class="p-2 rounded border has-[:checked]:bg-emerald-50 has-[:checked]:border-emerald-400"><input type="checkbox" name="premium_factors" value="kcic"> Berjarak < 1 km dari Stasiun KCIC</label>
+                        <label class="p-2 rounded border has-[:checked]:bg-emerald-50 has-[:checked]:border-emerald-400"><input type="checkbox" name="premium_factors" value="toll_gate"> Berjarak < 1 km dari Pintu Tol</label>
+                        <label class="p-2 rounded border has-[:checked]:bg-emerald-50 has-[:checked]:border-emerald-400"><input type="checkbox" name="premium_factors" value="view"> Memiliki Pemandangan Komersial (View)</label>
+                        <label class="p-2 rounded border has-[:checked]:bg-emerald-50 has-[:checked]:border-emerald-400"><input type="checkbox" name="premium_factors" value="rtrw"> Masuk Zona Komersial/Pariwisata RTRW</label>
+                    </div>
+                </fieldset>
+
+                 <fieldset class="mb-8 border p-4 rounded-lg">
+                    <legend class="font-bold px-2">Unggah Dokumen Pendukung</legend>
+                    <p class="text-sm text-stone-600 mt-2 mb-4">Unggah foto properti, scan KTP, SHM, dan bukti PBB untuk analisis yang akurat. (Maks. 5 file, total 10MB)</p>
+                    <input type="file" id="documents" multiple accept="image/*,.pdf" class="w-full text-sm text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"/>
+                </fieldset>
+                
+                <fieldset class="mt-8 border-t pt-6">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="legal-consent" required class="mt-1 h-4 w-4">
+                        <label for="legal-consent" class="ml-3 text-sm">
+                            <strong>Saya menyatakan dan menjamin</strong> bahwa seluruh data yang saya isikan dalam formulir ini adalah benar, akurat, dan sesuai dengan dokumen asli. Saya memahami sepenuhnya bahwa pihak penyedia jasa akan menggunakan data ini secara langsung untuk penyusunan laporan, dan saya **bertanggung jawab penuh** atas segala konsekuensi yang timbul akibat kesalahan pengisian data oleh saya.
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="mt-8 text-center">
+                    <button type="submit" id="submit-premium-btn" disabled class="w-full md:w-auto btn-secondary font-bold py-4 px-12 rounded-lg text-xl disabled:bg-stone-300 disabled:cursor-not-allowed">Kirim Pengajuan Layanan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+```
+
+</main>
+
+<footer class="bg-stone-800 text-white">
+    <div class="container mx-auto py-8 px-6 text-center text-sm">
+        <p>&copy; 2025 InfoGantiRugi.id. Semua hak dilindungi.</p>
+        <p class="text-xs text-stone-400 mt-2">Layanan ini adalah jasa penyusunan dokumen administratif, bukan layanan hukum. Kami tidak menjamin hasil akhir nilai UGR.</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Chart Logic ---
+        const ctx = document.getElementById('comparisonChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Tol Getaci', 'Tol Bocimi', 'Tol Japek II', 'Tol Jogja-Solo'],
+                datasets: [{
+                    label: 'Nilai Terendah (Rp/m²)',
+                    data: [450000, 1200000, 900000, 4000000],
+                    backgroundColor: '#a8a29e',
+                }, {
+                    label: 'Nilai Tertinggi (Rp/m²)',
+                    data: [700000, 4000000, 2500000, 11000000],
+                    backgroundColor: '#059669',
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { y: { beginAtZero: true, ticks: { callback: (v) => new Intl.NumberFormat('id-ID').format(v) } } },
+                plugins: { tooltip: { callbacks: { label: (c) => `${c.dataset.label}: Rp ${new Intl.NumberFormat('id-ID').format(c.raw)}` } } }
+            }
+        });
+
+        // --- Free Calculator Logic ---
+        const calculateFreeBtn = document.getElementById('calculate-free-btn');
+        const freeEstimationResult = document.getElementById('free-estimation-result');
+        const freeResultText = document.getElementById('free-result-text');
+
+        calculateFreeBtn.addEventListener('click', () => {
+            const landArea = parseFloat(document.getElementById('free-land-area').value) || 0;
+            const buildingArea = parseFloat(document.getElementById('free-building-area').value) || 0;
+            const accessType = document.getElementById('free-access-type').value;
+
+            if (landArea === 0) {
+                alert('Mohon masukkan luas tanah.');
+                return;
+            }
+
+            let basePrice;
+            switch(accessType) {
+                case 'desa': basePrice = 700000; break;
+                case 'kabupaten': basePrice = 1500000; break;
+                case 'provinsi': basePrice = 2500000; break;
+            }
+
+            const buildingPrice = 2000000; // Simplified rate
+            const total = (landArea * basePrice) + (buildingArea * buildingPrice);
+            
+            const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
+            freeResultText.textContent = `${formatter.format(total * 0.9)} - ${formatter.format(total * 1.2)}`;
+            freeEstimationResult.style.display = 'block';
+        });
+        
+        // --- Premium Service Form Logic ---
+        const premiumFormContainer = document.getElementById('premium-form-container');
+        const formTitle = document.getElementById('form-title');
+        const legalConsent = document.getElementById('legal-consent');
+        const submitPremiumBtn = document.getElementById('submit-premium-btn');
+        const premiumForm = document.getElementById('premium-form');
+
+        window.selectPackage = (packageName) => {
+            const titles = {
+                'digital': 'Formulir Pengajuan Paket Digital',
+                'konsultasi': 'Formulir Pengajuan Paket Konsultasi',
+                'premium': 'Formulir Pengajuan Paket Premium'
+            };
+            formTitle.textContent = titles[packageName];
+            premiumFormContainer.style.display = 'block';
+            premiumFormContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        
+        legalConsent.addEventListener('change', () => {
+            submitPremiumBtn.disabled = !legalConsent.checked;
+        });
+        
+        premiumForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const certNo = document.getElementById('cert-no').value;
+            const certNoConfirm = document.getElementById('cert-no-confirm').value;
+
+            if (certNo !== certNoConfirm) {
+                alert('Nomor Sertifikat dan konfirmasinya tidak cocok. Mohon periksa kembali.');
+                return;
+            }
+
+            // In a real application, this is where you would handle the form data
+            // and integrate with a payment gateway.
+            alert('Pengajuan Anda telah diterima! Tim kami akan segera menghubungi Anda untuk langkah selanjutnya dan proses pembayaran. Terima kasih.');
+            premiumForm.reset();
+            submitPremiumBtn.disabled = true;
+            premiumFormContainer.style.display = 'none';
+        });
+        
+        // CTA button smooth scroll
+        document.getElementById('cta-premium-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+    });
+</script>
+
+```
+
+&lt;/body&gt;
+&lt;/html&gt;
+```
+
+\</immersive\>
